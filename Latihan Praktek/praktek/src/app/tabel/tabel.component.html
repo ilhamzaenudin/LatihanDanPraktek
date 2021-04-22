@@ -1,0 +1,25 @@
+<button class="btn btn-info" routerLink="/utama">Add</button>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Alamat</th>
+            <th scope="col">Kota</th>
+            <th scope="col">Pendapatan</th>
+            <th scope="col">action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let kl of dataList">
+            <td>{{kl.id}}</td>
+            <td>{{kl.nama}}</td>
+            <td>{{kl.alamat}}</td>
+            <td>{{kl.kota}}</td>
+            <td>{{kl.pendapatan}}</td>
+            <td>
+                <button class="btn btn-dark" routerLink="/edit/{{kl.id}}">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+        </tr>
+    </tbody>
+</table>

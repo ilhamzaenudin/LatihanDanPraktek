@@ -1,0 +1,21 @@
+<button class="btn btn-primary" routerLink="/form2">Add</button>
+<br>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">nama</th>
+            <th scope="col">keterangan</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let kl of daftarKelas">
+            <td>{{kl.id}}</td>
+            <td>{{kl.nama}}</td>
+            <td>{{kl.keterangan}}</td>
+            <td><button class="btn btn-primary" routerLink="/editkelas/{{kl.id}}">Edit</button></td>
+        </tr>
+    </tbody>
+</table>
