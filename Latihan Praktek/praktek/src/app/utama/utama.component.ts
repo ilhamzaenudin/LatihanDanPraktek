@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Data } from '../model/data';
 import { MasterService } from '../service/master.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-utama',
@@ -19,7 +20,8 @@ export class UtamaComponent implements OnInit {
   constructor(
     private ruter: Router,
     private route: ActivatedRoute,
-    private mservice: MasterService) {
+    private mservice: MasterService,
+    private toastr: ToastrService) {
     this.addDataForm = new FormGroup({
       nama: new FormControl(null, [Validators.required]),
       alamat: new FormControl(null, [Validators.required]),
@@ -52,8 +54,12 @@ export class UtamaComponent implements OnInit {
       this.daftarCustomer = DataTmp;
       console.log(this.daftarCustomer);
       this.mservice.insertData(DataTmp).subscribe((data) => {
-        console.log(data);
-        this.ruter.navigateByUrl("/edit/" + data.key);
+        this.toastr.success(data.message, 'Simpan Berhasil')
+          .onTap
+          .subscribe(
+            () => {
+              this.ruter.navigateByUrl("/edit/" + data.key);
+            });
       });
     }
   }

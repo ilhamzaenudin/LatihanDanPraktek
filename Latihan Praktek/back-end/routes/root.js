@@ -7,7 +7,7 @@ module.exports = async function (fastify, opts) {
     return { root: true }
   })
   fastify.get('/api/beranda',rumah.beranda);
-  fastify.get('/api/getdata',rumah.getdata);
+  fastify.post('/api/getdata',rumah.getdata);
   fastify.post('/api/savedata', rumah.savedata);
   fastify.get('/api/getdatabyid/:id', rumah.getDatabyId);
 }
